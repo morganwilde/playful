@@ -13,6 +13,8 @@ ShapeRectangle::ShapeRectangle(Point origin, double width, double height)
     Point topRight = Point(origin.getX() + this->getWidth(), origin.getY() + this->getHeight(), origin.getZ());
     Point bottomRight = Point(origin.getX() + this->getWidth(), origin.getY(), origin.getZ());
     
+    
+    
     // Add them to the point array
     this->pushToPointArray(origin);
     this->pushToPointArray(topLeft);

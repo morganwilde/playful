@@ -26,13 +26,4 @@ public:
     bool compareAreaWith(ShapeClass shape);
 };
 
-// Comparison methods
-template <class ShapeClass>
-bool ShapeRectangle::compareAreaWith(ShapeClass shape)
-{
-    double epsilon = 0.001;
-    double difference = fabs(this->getArea() - shape->getArea());
-    return (difference < epsilon);
-}
-
 #endif

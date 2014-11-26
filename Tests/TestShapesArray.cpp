@@ -102,30 +102,30 @@ void TestShapesArray::testVertexArray()
     // Test
     GLfloat *vertices = array.getVertexArray();
     // Origin
-    if (vertices[0] != (origin.getX() / width)) {
+    if (vertices[0] != ((origin.getX() / width) - 1)) {
         this->testFailed();
     }
-    if (vertices[1] != (origin.getY() / height)) {
+    if (vertices[1] != ((origin.getY() / height) - 1)) {
         this->testFailed();
     }
     if (vertices[2] != origin.getZ()) {
         this->testFailed();
     }
     // Top
-    if (vertices[3] != (top.getX() / width)) {
+    if (vertices[3] != ((top.getX() / width) - 1)) {
         this->testFailed();
     }
-    if (vertices[4] != (top.getY() / height)) {
+    if (vertices[4] != ((top.getY() / height) - 1)) {
         this->testFailed();
     }
     if (vertices[5] != top.getZ()) {
         this->testFailed();
     }
     // Right
-    if (vertices[6] != (right.getX() / width)) {
+    if (vertices[6] != ((right.getX() / width) - 1)) {
         this->testFailed();
     }
-    if (vertices[7] != (right.getY() / height)) {
+    if (vertices[7] != ((right.getY() / height) - 1)) {
         this->testFailed();
     }
     if (vertices[8] != right.getZ()) {

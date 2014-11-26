@@ -18,13 +18,13 @@ void TestShapeTriangle::testConstructor()
 
     ShapeTriangle triangle = ShapeTriangle(origin, width, height);
     
-    if (triangle.getOrigin() != origin) {
+    if (triangle.getPointA1() != origin) {
         this->testFailed();
     }
-    if (triangle.getWidth() != width) {
+    if (triangle.getPointA2() != top) {
         this->testFailed();
     }
-    if (triangle.getHeight() != height) {
+    if (triangle.getPointA3() != right) {
         this->testFailed();
     }
 

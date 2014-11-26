@@ -58,7 +58,6 @@ Point ShapeTriangle::getPointA2()
 {
     return this->a2;
 }
-
 Point ShapeTriangle::getPointA3()
 {
     return this->a3;
