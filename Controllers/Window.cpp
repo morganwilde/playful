@@ -128,12 +128,12 @@ Window &Window::getSingleton(int width, int height, std::string title)
 void Window::setWidth(int width)
 {
     this->implementation->width = width;
-    this->shapesArray.setWindowSize(this->getWidth(), this->getHeight());
+    this->shapesArray.setSize(this->getWidth(), this->getHeight());
 }
 void Window::setHeight(int height)
 {
     this->implementation->height = height;
-    this->shapesArray.setWindowSize(this->getWidth(), this->getHeight());
+    this->shapesArray.setSize(this->getWidth(), this->getHeight());
 }
 void Window::setTitle(std::string title)
 {
@@ -319,12 +319,12 @@ void windowDisplay()
         0,
         colorArray
     );
-
+    // /Color
     glDrawArrays(GL_TRIANGLES, 0, points);
+    free(vertexArray);
+    free(colorArray);
     glDisableVertexAttribArray(window.getGlutColorAttribute());
     glDisableVertexAttribArray(window.getGlutCoordinateAttribute());
-    // /Color
-
 
     // Display result
     glutSwapBuffers();

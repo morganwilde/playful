@@ -87,7 +87,7 @@ void TestShapesArray::testVertexArray()
 {
     this->testInit(__func__);
     ShapesArray array = ShapesArray();
-    array.setWindowSize(200, 200);
+    array.setSize(200, 200);
 
     // Shapes
     double width = 200/2.0;

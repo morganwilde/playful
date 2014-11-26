@@ -19,7 +19,7 @@ ShapesArray::~ShapesArray()
     }
 }
 
-void ShapesArray::setWindowSize(int width, int height)
+void ShapesArray::setSize(int width, int height)
 {
     this->width = width;
     this->height = height;

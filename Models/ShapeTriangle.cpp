@@ -26,7 +26,6 @@ ShapeTriangle::ShapeTriangle(Point a1, Point a2, Point a3)
     // Designated constructor
     Shape::Shape();
     init(a1, a2, a3);
-    std::cout << "ShapeTriangle" << getPointCount() << std::endl;
 }
 
 ShapeTriangle::ShapeTriangle(Point origin, double width, double height)

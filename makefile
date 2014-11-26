@@ -11,6 +11,7 @@ Models/ShapeTriangle.cpp \
 Models/ShapeRectangle.cpp \
 Models/ShapesArray.cpp \
 Models/Color.cpp \
+Models/Rectangle.cpp \
 Controllers/Logger.cpp
 
 TESTS = Tests/Test.cpp \
@@ -18,7 +19,8 @@ Tests/TestWindow.cpp \
 Tests/TestPoint.cpp \
 Tests/TestShape.cpp \
 Tests/TestShapeTriangle.cpp \
-Tests/TestShapesArray.cpp
+Tests/TestShapesArray.cpp \
+Tests/TestRectangle.cpp
 
 all: main.cpp
 	$(CC) $(FLAG_DEBUG) $(CFLAGS) $(PARTS) main.cpp -o main $(LFLAGS)

@@ -17,7 +17,7 @@ public:
     ShapesArray();
     ~ShapesArray();
     // Setters
-    void setWindowSize(int width, int height);
+    void setSize(int width, int height);
     // Getters
     int getShapeCount();
     Shape **getShapeArray();
