@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
         testWindow.testSetterTitle();
         testWindow.testSetterTitleCString();
         testWindow.testSetterDisplayLoop();
-        //testWindow.testSetterGlutArguments();
     } 
     {
         TestPoint testPoint;
