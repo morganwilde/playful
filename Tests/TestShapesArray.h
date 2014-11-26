@@ -10,6 +10,7 @@ public:
     void testConstructor();
     void testShapeCount();
     void testShapeAdd();
+    void testShapesArrayAdd();
     void testVertexCount();
     void testVertexArray();
 };

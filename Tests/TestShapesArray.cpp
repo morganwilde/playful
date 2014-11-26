@@ -1,6 +1,7 @@
 #include "TestShapesArray.h"
 #include "../Models/ShapesArray.h"
 #include "../Models/ShapeTriangle.h"
+#include "../Models/Rectangle.h"
 
 TestShapesArray::TestShapesArray()
 {
@@ -52,6 +53,28 @@ void TestShapesArray::testShapeAdd()
         if (*triangleInArray != *triangle) {
             this->testFailed();
         }
+    }
+
+    this->testInterpret();
+}
+
+void TestShapesArray::testShapesArrayAdd()
+{
+    this->testInit(__func__);
+    // Shapes
+    double width = 200;
+    double height = 200;
+    Point origin = Point(0, 0);
+
+    Rectangle *rect = new Rectangle(origin, width, height);
+    
+    // Array
+    ShapesArray array = ShapesArray();
+    array.add(rect);
+
+    // Tests
+    if (array.getShapeCount() != 2) {
+        this->testFailed();
     }
 
     this->testInterpret();

@@ -115,3 +115,9 @@ void ShapesArray::add(Shape *shape)
     this->array = (Shape **)realloc(this->array, this->shapeCount * sizeof(Shape *));
     this->array[this->shapeCount - 1] = shape;
 }
+void ShapesArray::add(ShapesArray *shapesArray)
+{
+    for (int i = 0; i < shapesArray->getShapeCount(); i++) {
+        add(shapesArray->getShapeArray()[i]);
+    }
+}

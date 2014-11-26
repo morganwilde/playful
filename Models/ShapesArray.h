@@ -27,6 +27,7 @@ public:
     Shape *shapeContaining(Point point);
     // Array managers
     void add(Shape *shape);
+    void add(ShapesArray *shapesArray);
 };
 
 #endif
