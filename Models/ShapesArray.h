@@ -13,21 +13,24 @@ private:
     // Window size
     int width;
     int height;
+    Color color;
 public:
     ShapesArray();
     ~ShapesArray();
     // Setters
     void setSize(int width, int height);
+    void setColor(Color color);
     // Getters
     int getShapeCount();
     Shape **getShapeArray();
     GLfloat *getVertexArray();
     GLfloat *getColorArray();
     int getVertexCount();
+    Color getColor();
     Shape *shapeContaining(Point point);
     // Array managers
     void add(Shape *shape);
-    void add(ShapesArray *shapesArray);
+    void add(ShapesArray *shapesArray);    
 };
 
 #endif

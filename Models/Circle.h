@@ -1,11 +1,11 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef CIRCLE_H
+#define CIRCLE_H
 
 #include "ShapesArray.h"
 #include "ShapeTriangle.h"
 #include "Color.h"
 
-class Rectangle : public ShapesArray
+class Circle : public ShapesArray
 {
 public:
     Rectangle(Point origin, double width, double height);

@@ -24,6 +24,14 @@ void ShapesArray::setSize(int width, int height)
     this->width = width;
     this->height = height;
 }
+void ShapesArray::setColor(Color color)
+{
+    this->color = color;
+    for (int i = 0; i < getShapeCount(); i++) {
+        getShapeArray()[i]->color = getColor();
+    }
+    
+}
 
 int ShapesArray::getShapeCount()
 {
@@ -92,6 +100,11 @@ GLfloat *ShapesArray::getColorArray()
 int ShapesArray::getVertexCount()
 {
     return this->vertexCount;
+}
+
+Color ShapesArray::getColor()
+{
+    return this->color;
 }
 
 Shape *ShapesArray::shapeContaining(Point point)
