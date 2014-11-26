@@ -3,7 +3,6 @@
 #include "Controllers/Window.h"
 // Models
 #include "Models/ShapeTriangle.h"
-#include "Models/ShapeRectangle.h"
 #include "Models/Rectangle.h"
 
 int main(int argc, char *argv[])

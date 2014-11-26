@@ -8,7 +8,6 @@ PARTS = Controllers/Window.cpp \
 Models/Point.cpp \
 Models/Shape.cpp \
 Models/ShapeTriangle.cpp \
-Models/ShapeRectangle.cpp \
 Models/ShapesArray.cpp \
 Models/Color.cpp \
 Models/Rectangle.cpp \
