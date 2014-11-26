@@ -10,7 +10,6 @@ Models/Shape.cpp \
 Models/ShapeTriangle.cpp \
 Models/ShapeRectangle.cpp \
 Models/ShapesArray.cpp \
-Models/ShapeAnalyser.cpp \
 Models/Color.cpp \
 Controllers/Logger.cpp
 
@@ -19,8 +18,7 @@ Tests/TestWindow.cpp \
 Tests/TestPoint.cpp \
 Tests/TestShape.cpp \
 Tests/TestShapeTriangle.cpp \
-Tests/TestShapesArray.cpp \
-Tests/TestShapeAnalyser.cpp
+Tests/TestShapesArray.cpp
 
 all: main.cpp
 	$(CC) $(FLAG_DEBUG) $(CFLAGS) $(PARTS) main.cpp -o main $(LFLAGS)

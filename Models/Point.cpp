@@ -14,6 +14,13 @@ Point::Point(double x, double y, double z)
     this->setZ(z);
 }
 
+Point::Point(double x, double y)
+{
+    this->setX(x);
+    this->setY(y);
+    this->setZ(0);
+}
+
 Point::~Point()
 {
 

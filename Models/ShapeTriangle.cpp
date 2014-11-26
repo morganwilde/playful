@@ -15,11 +15,18 @@ void ShapeTriangle::init(Point a1, Point a2, Point a3)
     pushToPointArray(getPointA3());
 }
 
+ShapeTriangle::ShapeTriangle()
+{
+    // Convenience constructor
+    Shape::Shape();
+}
+
 ShapeTriangle::ShapeTriangle(Point a1, Point a2, Point a3)
 {
     // Designated constructor
     Shape::Shape();
     init(a1, a2, a3);
+    std::cout << "ShapeTriangle" << getPointCount() << std::endl;
 }
 
 ShapeTriangle::ShapeTriangle(Point origin, double width, double height)
@@ -50,15 +57,15 @@ void ShapeTriangle::setPointA3(Point a3)
     this->a3 = a3;
 }
 // Getters
-Point ShapeTriangle::getPointA1()
+Point ShapeTriangle::getPointA1() const
 {
     return this->a1;
 }
-Point ShapeTriangle::getPointA2()
+Point ShapeTriangle::getPointA2() const
 {
     return this->a2;
 }
-Point ShapeTriangle::getPointA3()
+Point ShapeTriangle::getPointA3() const
 {
     return this->a3;
 }

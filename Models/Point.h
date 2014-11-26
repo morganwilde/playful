@@ -22,6 +22,10 @@ public:
      */
     Point(double x, double y, double z);
     /**
+     * The convenience constructor for 2D first points.
+     */
+    Point(double x, double y);
+    /**
      * The destructor.
      */
     ~Point();

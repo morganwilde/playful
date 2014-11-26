@@ -12,6 +12,7 @@ private:
     // Convenience methods
     void init(Point a1, Point a2, Point a3);
 public:
+    ShapeTriangle();
     ShapeTriangle(Point origin, double width, double height);
     ShapeTriangle(Point a1, Point a2, Point a3);
     ~ShapeTriangle();
@@ -20,9 +21,9 @@ public:
     void setPointA2(Point a2);
     void setPointA3(Point a3);
     // Getters
-    Point getPointA1();
-    Point getPointA2();
-    Point getPointA3();
+    Point getPointA1() const;
+    Point getPointA2() const;
+    Point getPointA3() const;
 };
 
 #endif

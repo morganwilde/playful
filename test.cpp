@@ -3,7 +3,6 @@
 #include "Tests/TestShape.h"
 #include "Tests/TestShapeTriangle.h"
 #include "Tests/TestShapesArray.h"
-#include "Tests/TestShapeAnalyser.h"
 
 int main(int argc, char *argv[])
 {
@@ -49,10 +48,6 @@ int main(int argc, char *argv[])
         testShapesArray.testShapeAdd();
         testShapesArray.testVertexCount();
         testShapesArray.testVertexArray();
-    }
-    {
-        TestShapeAnalyser testShapeAnalyser;
-        testShapeAnalyser.testEqualArea();
     }
 
     return 0;

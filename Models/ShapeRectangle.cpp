@@ -13,15 +13,9 @@ ShapeRectangle::ShapeRectangle(Point origin, double width, double height)
     Point topRight = Point(origin.getX() + this->getWidth(), origin.getY() + this->getHeight(), origin.getZ());
     Point bottomRight = Point(origin.getX() + this->getWidth(), origin.getY(), origin.getZ());
     
-    
-    
-    // Add them to the point array
-    this->pushToPointArray(origin);
-    this->pushToPointArray(topLeft);
-    this->pushToPointArray(bottomRight);
-    this->pushToPointArray(topRight);
-    this->pushToPointArray(bottomRight);
-    this->pushToPointArray(topLeft);
+    setTriangleA(origin, topLeft, bottomRight);
+    setTriangleB(topRight, bottomRight, topLeft);
+    std::cout << "ShapeRectangle" << triangleA.getPointCount() << std::endl;
 }
 
 ShapeRectangle::~ShapeRectangle()
@@ -42,6 +36,20 @@ void ShapeRectangle::setHeight(double height)
 {
     this->height = height;
 }
+void ShapeRectangle::setTriangleA(Point a1, Point a2, Point a3)
+{
+    triangleA = ShapeTriangle(a1, a2, a3);
+    for (int i = 0; i < triangleA.getPointCount(); i++) {
+        //pushToPointArray(triangleA.popFromPointArray());
+    }
+}
+void ShapeRectangle::setTriangleB(Point a1, Point a2, Point a3)
+{
+    triangleB = ShapeTriangle(a1, a2, a3);
+    for (int i = 0; i < triangleB.getPointCount(); i++) {
+        //pushToPointArray(triangleB.popFromPointArray());
+    }
+}
 // Getters
 Point ShapeRectangle::getOrigin()
 {
@@ -59,4 +67,3 @@ double ShapeRectangle::getArea()
 {
     return this->getWidth() * this->getHeight();
 }
-
