@@ -21,3 +21,18 @@ Rectangle::~Rectangle()
 {
 
 }
+
+// Setters
+void Rectangle::setColor(Color color)
+{
+    this->color = color;
+    for (int i = 0; i < getShapeCount(); i++) {
+        getShapeArray()[i]->color = getColor();
+    }
+    
+}
+// Getters
+Color Rectangle::getColor()
+{
+    return this->color;
+}
