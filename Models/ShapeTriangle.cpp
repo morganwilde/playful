@@ -1,21 +1,34 @@
 #include "ShapeTriangle.h"
 
+void ShapeTriangle::init(Point a1, Point a2, Point a3)
+{
+    /* Designated initialiser */
+
+    // Set anchor points
+    this->setPointA1(a1);
+    this->setPointA2(a2);
+    this->setPointA3(a3);
+
+    // Add them to the point array
+    pushToPointArray(getPointA1());
+    pushToPointArray(getPointA2());
+    pushToPointArray(getPointA3());
+}
+
+ShapeTriangle::ShapeTriangle(Point a1, Point a2, Point a3)
+{
+    // Designated constructor
+    Shape::Shape();
+    init(a1, a2, a3);
+}
+
 ShapeTriangle::ShapeTriangle(Point origin, double width, double height)
 {
+    // Convenience constructor
     Shape::Shape();
-    // Set properties
-    this->setOrigin(origin);
-    this->setWidth(width);
-    this->setHeight(height);
-
-    // Create necessary points
-    Point top = Point(origin.getX(), origin.getY() + this->getHeight(), origin.getZ());
-    Point right = Point(origin.getX() + this->getWidth(), origin.getY(), origin.getZ());
-    
-    // Add them to the point array
-    this->pushToPointArray(origin);
-    this->pushToPointArray(top);
-    this->pushToPointArray(right);
+    Point top = Point(origin.getX(), origin.getY() + height, origin.getZ());
+    Point right = Point(origin.getX() + width, origin.getY(), origin.getZ());
+    init(origin, top, right);
 }
 
 ShapeTriangle::~ShapeTriangle()
@@ -24,28 +37,29 @@ ShapeTriangle::~ShapeTriangle()
 }
 
 // Setters
-void ShapeTriangle::setOrigin(Point origin)
+void ShapeTriangle::setPointA1(Point a1)
 {
-    this->origin = origin;
+    this->a1 = a1;
 }
-void ShapeTriangle::setWidth(double width)
+void ShapeTriangle::setPointA2(Point a2)
 {
-    this->width = width;
+    this->a2 = a2;
 }
-void ShapeTriangle::setHeight(double height)
+void ShapeTriangle::setPointA3(Point a3)
 {
-    this->height = height;
+    this->a3 = a3;
 }
 // Getters
-Point ShapeTriangle::getOrigin()
+Point ShapeTriangle::getPointA1()
 {
-    return this->origin;
+    return this->a1;
 }
-double ShapeTriangle::getWidth()
+Point ShapeTriangle::getPointA2()
 {
-    return this->width;
+    return this->a2;
 }
-double ShapeTriangle::getHeight()
+
+Point ShapeTriangle::getPointA3()
 {
-    return this->height;
+    return this->a3;
 }

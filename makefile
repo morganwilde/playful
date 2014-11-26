@@ -1,6 +1,6 @@
 CC = g++
 FLAG_DEBUG = -DDEBUG
-CFLAGS = -Wno-deprecated-declarations
+CFLAGS = -Wno-deprecated-declarations -std=c++0x
 LFLAGS = -framework GLUT -framework OpenGL -framework Cocoa \
 -I/usr/local/include -I/opt/X11/include -I/opt/X11/lib
 
