@@ -134,3 +134,33 @@ void ShapesArray::add(ShapesArray *shapesArray)
         add(shapesArray->getShapeArray()[i]);
     }
 }
+void ShapesArray::remove(Shape *shape)
+{
+    int shapeIndex = 0;
+    bool shapeFound = false;
+    // Search for it
+    for (int i = 0; i < getShapeCount(); i++) {
+        Shape *shapeInArray = getShapeArray()[i];
+        if (shapeInArray == shape) {
+            shapeFound = true;
+            shapeIndex = i;
+        }
+    }
+    if (shapeFound) {
+        // If found, shift the array left
+        for (int i = shapeIndex; i < getShapeCount(); i++) {
+            this->array[i] = this->array[i + 1];
+        }
+        // Adjust array capacity
+        this->shapeCount--;
+        this->array = (Shape **)realloc(this->array, this->shapeCount * sizeof(Shape *));
+        // Free the shape
+        free(shape);
+    }
+}
+void ShapesArray::remove(ShapesArray *shapesArray)
+{
+    for (int i = 0; i < shapesArray->getShapeCount(); i++) {
+        remove(shapesArray->getShapeArray()[i]);
+    }
+}

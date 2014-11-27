@@ -11,6 +11,8 @@ public:
     void testShapeCount();
     void testShapeAdd();
     void testShapesArrayAdd();
+    void testShapeRemove();
+    void testShapesArrayRemove();
     void testVertexCount();
     void testVertexArray();
 };

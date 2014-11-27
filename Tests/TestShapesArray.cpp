@@ -80,6 +80,74 @@ void TestShapesArray::testShapesArrayAdd()
     this->testInterpret();
 }
 
+void TestShapesArray::testShapeRemove()
+{
+    this->testInit(__func__);
+    // Shapes
+    double width = 200;
+    double height = 200;
+    Point origin = Point(0,0,0);
+    Point top = Point(0, height, 0);
+    Point right = Point(width, 0, 0);
+
+    ShapeTriangle *triangle1 = new ShapeTriangle(origin, top, right);
+    ShapeTriangle *triangle2 = new ShapeTriangle(origin, width, height);
+    ShapeTriangle *triangle3 = new ShapeTriangle(origin, width + 100, height);
+
+    // Array
+    ShapesArray array = ShapesArray();
+    array.add(triangle1);
+    array.add(triangle2);
+
+    // Tests
+
+    // Simple removal
+    array.remove(triangle1);
+    if (array.getShapeCount() != 1) {
+        this->testFailed();
+    }
+    // Removing twice
+    array.remove(triangle1);
+    if (array.getShapeCount() != 1) {
+        this->testFailed();
+    }
+    // Removing shape that's not there
+    array.remove(triangle3);
+    if (array.getShapeCount() != 1) {
+        this->testFailed();
+    }
+    // Removing last item
+    array.remove(triangle2);
+    if (array.getShapeCount() != 0) {
+        this->testFailed();
+    }
+
+    this->testInterpret();
+}
+
+void TestShapesArray::testShapesArrayRemove()
+{
+    this->testInit(__func__);
+    // Shapes
+    double width = 200;
+    double height = 200;
+    Point origin = Point(0, 0);
+
+    Rectangle *rect = new Rectangle(origin, width, height);
+    
+    // Array
+    ShapesArray array = ShapesArray();
+    array.add(rect);
+
+    // Tests
+    array.remove(rect);
+    if (array.getShapeCount() != 0) {
+        this->testFailed();
+    }
+
+    this->testInterpret();
+}
+
 void TestShapesArray::testVertexCount()
 {
     this->testInit(__func__);

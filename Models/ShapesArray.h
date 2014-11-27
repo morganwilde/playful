@@ -30,7 +30,9 @@ public:
     Shape *shapeContaining(Point point);
     // Array managers
     void add(Shape *shape);
-    void add(ShapesArray *shapesArray);    
+    void add(ShapesArray *shapesArray);
+    void remove(Shape *shape);
+    void remove(ShapesArray *shapesArray);
 };
 
 #endif

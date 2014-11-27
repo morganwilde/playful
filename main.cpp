@@ -23,12 +23,14 @@ int main(int argc, char *argv[])
     triangle2->color = Color(0.5, 0, 0, 1);
     rect1->setColor(Color(0, 1, 0, 1));
     line->setColor(Color(0, 0, 1, 1));
-    circle->setColor(Color(1, 1, 0, 1));
+    circle->setColor(Color(0.5, 0.5, 0.5, 1));
 
+    /*
     window.shapesArray.add(triangle1);
     window.shapesArray.add(triangle2);
     window.shapesArray.add(rect1);
     window.shapesArray.add(line);
+    */
     window.shapesArray.add(circle);
 
     window.glutDisplayLoop();

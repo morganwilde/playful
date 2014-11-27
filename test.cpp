@@ -49,6 +49,8 @@ int main(int argc, char *argv[])
         testShapesArray.testShapeCount();
         testShapesArray.testShapeAdd();
         testShapesArray.testShapesArrayAdd();
+        testShapesArray.testShapeRemove();
+        testShapesArray.testShapesArrayRemove();
         testShapesArray.testVertexCount();
         testShapesArray.testVertexArray();
     }
