@@ -33,6 +33,8 @@ public:
     double *getMatrix();
     double getDeterminant2D();
     double getDeterminant3D();
+    // Methods
+    bool pointContained(Point point);
 };
 
 #endif

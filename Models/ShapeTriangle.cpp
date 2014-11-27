@@ -105,3 +105,26 @@ double ShapeTriangle::getDeterminant3D()
 {
     return this->determinant3D;
 }
+// Methods
+bool ShapeTriangle::pointContained(Point point)
+{
+    // Calculate barycentric coordinates
+    const double lambda1 = (
+            (getPointA2().getY() - getPointA3().getY()) *
+            (point.getX() - getPointA3().getX())
+        + 
+            (getPointA3().getX() - getPointA2().getX()) *
+            (point.getY() - getPointA3().getY())
+        ) / getDeterminant2D();
+    const double lambda2 = (
+            (getPointA3().getY() - getPointA1().getY()) *
+            (point.getX() - getPointA3().getX())
+        +
+            (getPointA1().getX() - getPointA3().getX()) *
+            (point.getY() - getPointA3().getY())
+        ) / getDeterminant2D();
+    const double lambda3 = 1 - lambda1 - lambda2;
+
+    // For a point to be inside a triangle, all lambdas must be >= 0
+    return (lambda1 >= 0) && (lambda2 >= 0) && (lambda3 >= 0);
+}
