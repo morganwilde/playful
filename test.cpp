@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
     {
         TestCircle testCircle;
         testCircle.testConstructorShapeCount();
+        testCircle.testConstructorShapeCountFive();
         testCircle.testPerimeter();
         testCircle.testSegmentWidth();
     }

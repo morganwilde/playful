@@ -13,7 +13,19 @@ void TestCircle::testConstructorShapeCount()
     Point origin = Point(100, 100);
     double radius = 100;
     Circle circle = Circle(origin, radius);
-    if (circle.getShapeCount() != 0) {
+    if (circle.getShapeCount() != 1) {
+        this->testFailed();
+    }
+    this->testInterpret();
+}
+
+void TestCircle::testConstructorShapeCountFive()
+{
+    this->testInit(__func__);
+    Point origin = Point(100, 100);
+    double radius = 100;
+    Circle circle = Circle(origin, radius, 5);
+    if (circle.getShapeCount() != 5) {
         this->testFailed();
     }
     this->testInterpret();

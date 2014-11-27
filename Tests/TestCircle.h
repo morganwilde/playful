@@ -8,6 +8,7 @@ class TestCircle : protected Test
 public:
     TestCircle();
     void testConstructorShapeCount();
+    void testConstructorShapeCountFive();
     void testPerimeter();
     void testSegmentWidth();
 };
