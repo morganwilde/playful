@@ -7,8 +7,13 @@
 class ShapesArray
 {
 private:
+    // Shapes made out of Points
     int shapeCount;
     Shape **array;
+    // Shapes made out of other Shapes
+    int compositeCount;
+    ShapesArray **compositeArray;
+    // Vertices derived from shapes and composites arrays
     int vertexCount;
     // Window size
     int width;
@@ -23,6 +28,8 @@ public:
     // Getters
     int getShapeCount();
     Shape **getShapeArray();
+    int getCompositeCount();
+    ShapesArray **getCompositeArray();
     GLfloat *getVertexArray();
     GLfloat *getColorArray();
     int getVertexCount();

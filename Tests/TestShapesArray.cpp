@@ -73,7 +73,10 @@ void TestShapesArray::testShapesArrayAdd()
     array.add(rect);
 
     // Tests
-    if (array.getShapeCount() != 2) {
+    if (array.getShapeCount() != 0) {
+        this->testFailed();
+    }
+    if (array.getCompositeCount() != 1) {
         this->testFailed();
     }
 
@@ -134,16 +137,27 @@ void TestShapesArray::testShapesArrayRemove()
     Point origin = Point(0, 0);
 
     Rectangle *rect = new Rectangle(origin, width, height);
+    Rectangle *rect1 = new Rectangle(origin, width, height);
     
     // Array
     ShapesArray array = ShapesArray();
     array.add(rect);
+    array.add(rect1);
 
     // Tests
     array.remove(rect);
-    if (array.getShapeCount() != 0) {
+    if (array.getCompositeCount() != 1) {
         this->testFailed();
     }
+    array.remove(rect);
+    if (array.getCompositeCount() != 1) {
+        this->testFailed();
+    }
+    array.remove(rect1);
+    if (array.getCompositeCount() != 0) {
+        this->testFailed();
+    }
+
 
     this->testInterpret();
 }

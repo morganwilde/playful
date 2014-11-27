@@ -26,13 +26,14 @@ int main(int argc, char *argv[])
     circle->setColor(Color(0.5, 0.5, 0.5, 1));
 
     
-    window.shapesArray.add(triangle2);
+    
     /*
     window.shapesArray.add(triangle2);
     window.shapesArray.add(rect1);
     window.shapesArray.add(line);
     */
     window.shapesArray.add(circle);
+    window.shapesArray.add(triangle2);
 
     window.glutDisplayLoop();
 

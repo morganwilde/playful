@@ -4,6 +4,8 @@ ShapesArray::ShapesArray()
 {
     this->shapeCount = 0;
     this->array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
+    this->compositeCount = 0;
+    this->compositeArray = (ShapesArray **)malloc(this->compositeCount * sizeof(ShapesArray *));
 }
 
 ShapesArray::~ShapesArray()
@@ -38,9 +40,19 @@ int ShapesArray::getShapeCount()
     return this->shapeCount;
 }
 
+int ShapesArray::getCompositeCount()
+{
+    return this->compositeCount;
+}
+
 Shape **ShapesArray::getShapeArray()
 {
     return this->array;
+}
+
+ShapesArray **ShapesArray::getCompositeArray()
+{
+    return this->compositeArray;
 }
 
 GLfloat *ShapesArray::getVertexArray()
@@ -130,9 +142,10 @@ void ShapesArray::add(Shape *shape)
 }
 void ShapesArray::add(ShapesArray *shapesArray)
 {
-    for (int i = 0; i < shapesArray->getShapeCount(); i++) {
-        add(shapesArray->getShapeArray()[i]);
-    }
+    // Update shapesArray
+    this->compositeCount++;
+    this->compositeArray = (ShapesArray **)realloc(this->compositeArray, this->compositeCount * sizeof(ShapesArray *));
+    this->compositeArray[this->compositeCount - 1] = shapesArray;
 }
 void ShapesArray::remove(Shape *shape)
 {
@@ -146,6 +159,7 @@ void ShapesArray::remove(Shape *shape)
             shapeIndex = i;
         }
     }
+    // If found
     if (shapeFound) {
         // If found, shift the array left
         for (int i = shapeIndex; i < getShapeCount(); i++) {
@@ -160,7 +174,25 @@ void ShapesArray::remove(Shape *shape)
 }
 void ShapesArray::remove(ShapesArray *shapesArray)
 {
-    for (int i = 0; i < shapesArray->getShapeCount(); i++) {
-        remove(shapesArray->getShapeArray()[i]);
+    bool compositeFound = false;
+    int compositeIndex = 0;
+    // Search for it
+    for (int i = 0; i < getCompositeCount(); i++) {
+        ShapesArray *compositeInArray = getCompositeArray()[i];
+        if (compositeInArray == shapesArray) {
+            compositeFound = true;
+            compositeIndex = i;
+        }
+    }
+    // If found
+    if (compositeFound) {
+        // Shift the array left
+        for (int i = compositeIndex; i < getCompositeCount(); i++) {
+            this->compositeArray[i] = this->compositeArray[i + 1];
+        }
+        // Adjust array capacity
+        this->compositeCount--;
+        this->compositeArray = (ShapesArray **)realloc(this->compositeArray, this->compositeCount * sizeof(ShapesArray *));
+        free(shapesArray);
     }
 }
