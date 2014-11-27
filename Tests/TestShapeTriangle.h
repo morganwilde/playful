@@ -13,6 +13,7 @@ public:
     void testMatrix();
     void testDeterminant2D();
     void testDeterminant3D();
+    void test2DPointContained();
 };
 
 #endif

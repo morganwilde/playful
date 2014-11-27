@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
         testShapeTriangle.testMatrix();
         testShapeTriangle.testDeterminant2D();
         testShapeTriangle.testDeterminant3D();
+        testShapeTriangle.test2DPointContained();
     }
     {
         TestShapesArray testShapesArray;

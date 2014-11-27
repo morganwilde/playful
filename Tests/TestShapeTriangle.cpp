@@ -156,3 +156,39 @@ void TestShapeTriangle::testDeterminant3D()
     }
     testInterpret();
 }
+
+void TestShapeTriangle::test2DPointContained()
+{
+    testInit(__func__);
+    double width = 200;
+    double height = 200;
+    Point origin = Point(100,100,0);
+    Point top = Point(100, height, 0);
+    Point right = Point(width, 100, 0);
+
+    ShapeTriangle triangle = ShapeTriangle(origin, top, right);
+
+    // Tests
+    // See if all vertices are contained
+    if (!triangle.pointContained(origin)) {
+        testFailed();
+    }
+    if (!triangle.pointContained(top)) {
+        testFailed();
+    }
+    if (!triangle.pointContained(right)) {
+        testFailed();
+    }
+    // Test point inside
+    Point inside = Point(120, 120);
+    if (!triangle.pointContained(inside)) {
+        testFailed();
+    }
+    // Point outside
+    Point outside = Point(99, 99);
+    if (triangle.pointContained(outside)) {
+        testFailed();
+    }
+    
+    testInterpret();
+}
