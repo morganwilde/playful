@@ -67,10 +67,9 @@ GLfloat *ShapesArray::getVertexArray()
         Point *points = shape->getPointArray();
         for (int j = 0; j < shape->getPointCount(); j++) {
             Point point = points[j];
-            //std::cout << point << std::endl;
             count += 3;
             // Translate values
-            std::cout << point << std::endl;
+            //std::cout << point << std::endl;
             GLfloat x = (GLfloat)(point.getX() / (this->width/2.0)) - 1;
             GLfloat y = (GLfloat)(point.getY() / (this->height/2.0)) - 1;
             GLfloat z = (GLfloat)(point.getZ());
@@ -82,7 +81,6 @@ GLfloat *ShapesArray::getVertexArray()
     }
 
     this->vertexCount = count;
-    //std::cout << "pre: " << this->vertexCount << std::endl;
 
     // Draw from Composite array
 
@@ -100,14 +98,13 @@ GLfloat *ShapesArray::getVertexArray()
         }
     }
 
-    //std::cout << "post: " << this->vertexCount << std::endl;
-
     /*
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < this->vertexCount; i++) {
         std::cout << vertexArray[i] << ",";
     }
     std::cout << std::endl;
     */
+
     return vertexArray;
 }
 
@@ -123,7 +120,7 @@ GLfloat *ShapesArray::getColorArray()
         Point *points = shape->getPointArray();
         for (int j = 0; j < shape->getPointCount(); j++) {
             count += 4;
-            std::cout << shape->color << std::endl;
+            //std::cout << shape->color << std::endl;
             colorArray = (GLfloat *)realloc(colorArray, count * sizeof(GLfloat));
             colorArray[count - 4] = (GLfloat)shape->color.getRed();
             colorArray[count - 3] = (GLfloat)shape->color.getGreen();
@@ -184,6 +181,7 @@ void ShapesArray::add(Shape *shape)
 }
 void ShapesArray::add(ShapesArray *shapesArray)
 {
+    shapesArray->setSize(this->width, this->height);
     // Update shapesArray
     this->compositeCount++;
     this->compositeArray = (ShapesArray **)realloc(this->compositeArray, this->compositeCount * sizeof(ShapesArray *));
