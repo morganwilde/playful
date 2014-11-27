@@ -78,3 +78,81 @@ void TestShapeTriangle::testPoints()
     this->testInterpret();
 }
 
+void TestShapeTriangle::testMatrix()
+{
+    this->testInit(__func__);
+    double width = 200;
+    double height = 200;
+    Point origin = Point(123,456,0);
+    Point top = Point(333, height, 0);
+    Point right = Point(width, 333, 0);
+
+    ShapeTriangle triangle = ShapeTriangle(origin, top, right);
+
+    // Tests
+    double a11 = origin.getX() - right.getX();
+    double a12 = top.getX() - right.getX();
+    double a21 = origin.getY() - right.getY();
+    double a22 = top.getY() - right.getY();
+    if (a11 != triangle.getMatrix()[0]) {
+        this->testFailed();
+    }
+    if (a12 != triangle.getMatrix()[1]) {
+        this->testFailed();
+    }
+    if (a21 != triangle.getMatrix()[3]) {
+        this->testFailed();
+    }
+    if (a22 != triangle.getMatrix()[4]) {
+        this->testFailed();
+    }
+
+    this->testInterpret();
+}
+
+void TestShapeTriangle::testDeterminant2D()
+{
+    testInit(__func__);
+    double width = 200;
+    double height = 200;
+    Point origin = Point(123,456,0);
+    Point top = Point(333, height, 0);
+    Point right = Point(width, 333, 0);
+
+    ShapeTriangle triangle = ShapeTriangle(origin, top, right);
+
+    // Tests
+    double a11 = origin.getX() - right.getX();
+    double a12 = top.getX() - right.getX();
+    double a21 = origin.getY() - right.getY();
+    double a22 = top.getY() - right.getY();
+    double determinant2D = (a11 * a22) - (a12 * a21);
+    if (determinant2D != triangle.getDeterminant2D()) {
+        testFailed();
+    }
+    
+    testInterpret();
+}
+
+void TestShapeTriangle::testDeterminant3D()
+{
+    testInit(__func__);
+    double width = 200;
+    double height = 200;
+    Point origin = Point(123,456,0);
+    Point top = Point(333, height, 0);
+    Point right = Point(width, 333, 0);
+
+    ShapeTriangle triangle = ShapeTriangle(origin, top, right);
+
+    // Tests
+    double a11 = origin.getX() - right.getX();
+    double a12 = top.getX() - right.getX();
+    double a21 = origin.getY() - right.getY();
+    double a22 = top.getY() - right.getY();
+    double determinant3D = 0;
+    if (determinant3D != triangle.getDeterminant3D()) {
+        testFailed();
+    }
+    testInterpret();
+}

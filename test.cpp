@@ -42,6 +42,9 @@ int main(int argc, char *argv[])
         testShapeTriangle.testConstructor();
         testShapeTriangle.testPointCount();
         testShapeTriangle.testPoints();
+        testShapeTriangle.testMatrix();
+        testShapeTriangle.testDeterminant2D();
+        testShapeTriangle.testDeterminant3D();
     }
     {
         TestShapesArray testShapesArray;

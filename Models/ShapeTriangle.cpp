@@ -46,14 +46,39 @@ ShapeTriangle::~ShapeTriangle()
 void ShapeTriangle::setPointA1(Point a1)
 {
     this->a1 = a1;
+    setMatrix();
 }
 void ShapeTriangle::setPointA2(Point a2)
 {
     this->a2 = a2;
+    setMatrix();
 }
 void ShapeTriangle::setPointA3(Point a3)
 {
     this->a3 = a3;
+    setMatrix();
+}
+void ShapeTriangle::setMatrix()
+{
+    matrix[0] = getPointA1().getX() - getPointA3().getX();
+    matrix[1] = getPointA2().getX() - getPointA3().getX();
+    matrix[2] = 0; // TODO: implement
+    matrix[3] = getPointA1().getY() - getPointA3().getY();
+    matrix[4] = getPointA2().getY() - getPointA3().getY();
+    matrix[5] = 0; // TODO: implement
+    matrix[6] = 0; // TODO: implement
+    matrix[7] = 0; // TODO: implement
+    matrix[8] = 0; // TODO: implement
+    setDeterminant2D();
+    setDeterminant3D();
+}
+void ShapeTriangle::setDeterminant2D()
+{
+    this->determinant2D = (matrix[0] * matrix[4]) - (matrix[1] * matrix[3]);
+}
+void ShapeTriangle::setDeterminant3D()
+{
+    this->determinant3D = 0; // TODO: implement
 }
 // Getters
 Point ShapeTriangle::getPointA1() const
@@ -67,4 +92,16 @@ Point ShapeTriangle::getPointA2() const
 Point ShapeTriangle::getPointA3() const
 {
     return this->a3;
+}
+double *ShapeTriangle::getMatrix()
+{
+    return this->matrix;
+}
+double ShapeTriangle::getDeterminant2D()
+{
+    return this->determinant2D;
+}
+double ShapeTriangle::getDeterminant3D()
+{
+    return this->determinant3D;
 }

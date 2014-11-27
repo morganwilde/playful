@@ -13,7 +13,7 @@ void TestCircle::testConstructorShapeCount()
     Point origin = Point(100, 100);
     double radius = 100;
     Circle circle = Circle(origin, radius);
-    if (circle.getShapeCount() != 1) {
+    if (circle.getShapeCount() != 20) {
         this->testFailed();
     }
     this->testInterpret();
@@ -48,7 +48,7 @@ void TestCircle::testSegmentWidth()
     this->testInit(__func__);
     Point origin = Point(100, 100);
     double radius = 100;
-    int segments = 1;
+    int segments = 20;
     Circle circle = Circle(origin, radius);
     double perimeter = 2 * M_PI * circle.getRadius();
     double segmentWidth = perimeter / segments;

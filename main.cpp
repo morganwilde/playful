@@ -25,8 +25,9 @@ int main(int argc, char *argv[])
     line->setColor(Color(0, 0, 1, 1));
     circle->setColor(Color(0.5, 0.5, 0.5, 1));
 
+    
+    window.shapesArray.add(triangle2);
     /*
-    window.shapesArray.add(triangle1);
     window.shapesArray.add(triangle2);
     window.shapesArray.add(rect1);
     window.shapesArray.add(line);
