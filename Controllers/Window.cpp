@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "Logger.h"
+#include <unistd.h>
 
 /*
  * Hidden implementation [start]
@@ -271,10 +272,34 @@ void Window::glutDisplayFrame()
     glutCheckLoop();
 }
 
+#include "../Models/Circle.h"
+
 void Window::glutDisplayLoop()
 {
+    int segmentsFrom = 0;
+    int segmentsTo = 100;
+    bool forward = true;
+    int segments = segmentsFrom;
     while (this->isDisplayLoopActive()) {
+        Circle *circle = new Circle(Point(400, 300), 200, segments);
+        circle->setColor(Color(0.5, 0.5, 0.5, 1));
+        this->shapesArray.add(circle);
+    
         this->glutDisplayFrame();
+
+        this->shapesArray.remove(circle);
+
+        if (segments < segmentsTo && forward) {
+            segments++;
+            if (segments == segmentsTo) {
+                forward = !forward;
+            }
+        } else if (segments > segmentsFrom && !forward) {
+            segments--;
+            if (segments == segmentsFrom) {
+                forward = !forward;
+            }
+        }
     }
 }
 
@@ -328,6 +353,8 @@ void windowDisplay()
 
     // Display result
     glutSwapBuffers();
+    usleep(300000);
+    glutPostRedisplay();
 }
 
 void windowKeyboard(unsigned char key, int x, int y)
