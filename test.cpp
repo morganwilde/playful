@@ -4,6 +4,7 @@
 #include "Tests/TestShapeTriangle.h"
 #include "Tests/TestShapesArray.h"
 #include "Tests/TestRectangle.h"
+#include "Tests/TestCircle.h"
 
 int main(int argc, char *argv[])
 {
@@ -55,6 +56,12 @@ int main(int argc, char *argv[])
         TestRectangle testRectangle;
         testRectangle.testConstructorShapeCount();
         testRectangle.testConstructorTrianglePoints();
+    }
+    {
+        TestCircle testCircle;
+        testCircle.testConstructorShapeCount();
+        testCircle.testPerimeter();
+        testCircle.testSegmentWidth();
     }
 
     return 0;

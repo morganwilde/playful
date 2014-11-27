@@ -3,7 +3,6 @@
 
 #include "ShapesArray.h"
 #include "ShapeTriangle.h"
-#include "Color.h"
 
 class Rectangle : public ShapesArray
 {
