@@ -42,19 +42,26 @@ void Color::setAlpha(double alpha)
 }
 
 // Getters
-double Color::getRed()
+double Color::getRed() const
 {
     return this->red;
 }
-double Color::getGreen()
+double Color::getGreen() const
 {
     return this->green;
 }
-double Color::getBlue()
+double Color::getBlue() const
 {
     return this->blue;
 }
-double Color::getAlpha()
+double Color::getAlpha() const
 {
     return this->alpha;
+}
+
+// Operators
+std::ostream& operator<<(std::ostream &stream, const Color &color)
+{
+    stream << "Color( " << color.getRed() << " , " << color.getGreen() << " , " << color.getBlue() << " , " << color.getAlpha() << " )";
+    return stream;
 }

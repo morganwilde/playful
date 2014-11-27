@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
     window.shapesArray.add(rect1);
     window.shapesArray.add(line);
     */
-    window.shapesArray.add(circle);
+    window.shapesArray.add(rect1);
+    //window.shapesArray.add(circle);
     window.shapesArray.add(triangle2);
 
     window.glutDisplayLoop();

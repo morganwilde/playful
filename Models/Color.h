@@ -1,6 +1,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include <iostream>
+
 class Color
 {
 private:
@@ -19,11 +21,13 @@ public:
     void setBlue(double blue);
     void setAlpha(double alpha);
     // Getters
-    double getRed();
-    double getGreen();
-    double getBlue();
-    double getAlpha();
+    double getRed() const;
+    double getGreen() const;
+    double getBlue() const;
+    double getAlpha() const;
     double *getColorArray();
+    // Operators
+    friend std::ostream& operator<<(std::ostream &stream, const Color &color);
 };
 
 #endif

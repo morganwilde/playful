@@ -293,6 +293,7 @@ void windowDisplay()
     // Temp
     glEnableVertexAttribArray(window.getGlutCoordinateAttribute());
     GLfloat *vertexArray = window.shapesArray.getVertexArray();
+    std::cout << "end" << std::endl;
     int components = 3;
     int points = window.shapesArray.getVertexCount() / components;
 

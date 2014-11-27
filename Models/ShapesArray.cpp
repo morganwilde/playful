@@ -60,6 +60,8 @@ GLfloat *ShapesArray::getVertexArray()
     int count = 0;
     GLfloat *vertexArray = (GLfloat *)malloc(count * sizeof(GLfloat));
 
+    // Draw from Shape array
+
     for (int i = 0; i < this->getShapeCount(); i++) {
         Shape *shape = this->getShapeArray()[i];
         Point *points = shape->getPointArray();
@@ -68,6 +70,7 @@ GLfloat *ShapesArray::getVertexArray()
             //std::cout << point << std::endl;
             count += 3;
             // Translate values
+            std::cout << point << std::endl;
             GLfloat x = (GLfloat)(point.getX() / (this->width/2.0)) - 1;
             GLfloat y = (GLfloat)(point.getY() / (this->height/2.0)) - 1;
             GLfloat z = (GLfloat)(point.getZ());
@@ -79,6 +82,26 @@ GLfloat *ShapesArray::getVertexArray()
     }
 
     this->vertexCount = count;
+    //std::cout << "pre: " << this->vertexCount << std::endl;
+
+    // Draw from Composite array
+
+    for (int i = 0; i < this->getCompositeCount(); i++) {
+        ShapesArray *composite = this->getCompositeArray()[i];
+        GLfloat *vertexSubArray = composite->getVertexArray();
+        int vertexSubArrayCount = composite->getVertexCount();
+
+        // Append these vertices to the primary array
+        int countFrom = this->vertexCount;
+        this->vertexCount += vertexSubArrayCount;
+        vertexArray = (GLfloat *)realloc(vertexArray, this->vertexCount * sizeof(GLfloat));
+        for (int v = 0; v < vertexSubArrayCount; v++) {
+            vertexArray[countFrom + v] = vertexSubArray[v];
+        }
+    }
+
+    //std::cout << "post: " << this->vertexCount << std::endl;
+
     /*
     for (int i = 0; i < count; i++) {
         std::cout << vertexArray[i] << ",";
@@ -93,16 +116,35 @@ GLfloat *ShapesArray::getColorArray()
     int count = 0;
     GLfloat *colorArray = (GLfloat *)malloc(count * sizeof(GLfloat));
 
+    // Color from Shape array
+
     for (int i = 0; i < this->getShapeCount(); i++) {
         Shape *shape = this->getShapeArray()[i];
         Point *points = shape->getPointArray();
         for (int j = 0; j < shape->getPointCount(); j++) {
             count += 4;
+            std::cout << shape->color << std::endl;
             colorArray = (GLfloat *)realloc(colorArray, count * sizeof(GLfloat));
             colorArray[count - 4] = (GLfloat)shape->color.getRed();
             colorArray[count - 3] = (GLfloat)shape->color.getGreen();
             colorArray[count - 2] = (GLfloat)shape->color.getBlue();
             colorArray[count - 1] = (GLfloat)shape->color.getAlpha();
+        }
+    }
+
+    // Color from Composite array
+
+    for (int i = 0; i < this->getCompositeCount(); i++) {
+        ShapesArray *composite = this->getCompositeArray()[i];
+        GLfloat *colorSubArray = composite->getColorArray();
+        int colorSubArrayCount = (composite->getVertexCount() / 3) * 4;
+
+        // Append these colors to the primary array
+        int countFrom = count;
+        count += colorSubArrayCount;
+        colorArray = (GLfloat *)realloc(colorArray, count * sizeof(GLfloat));
+        for (int c = 0; c < colorSubArrayCount; c++) {
+            colorArray[countFrom + c] = colorSubArray[c];
         }
     }
 
