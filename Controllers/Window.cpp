@@ -367,8 +367,18 @@ void windowKeyboardSpecial(int key, int x, int y)
     Window &window = Window::getSingleton();
 
     // Interpret the key
+    double moveX = 0;
+    double moveY = 0;
     switch (key) {
+        case 100: moveX -= 1; break;
+        case 101: moveY += 1; break;
+        case 102: moveX += 1; break;
+        case 103: moveY -= 1; break;
         default: std::cout << key << std::endl;
+    }
+
+    if (window.getActiveShape() != nullptr && (moveX != 0 || moveY != 0)) {
+        std::cout << "move" << std::endl;
     }
 }
 
@@ -386,19 +396,13 @@ void windowMouseButton(int button, int state, int x, int y)
     if (state == MOUSE_BUTTON_DOWN) {
         Point location = Point(x, window.shapesArray.getHeight() - y);
         ShapeTriangle *triangle = window.shapesArray.shapeContaining(location);
-        //std::cout << location << "button -> " << triangle << std::endl;
         if (triangle != nullptr) {
             ShapesArray *composite = window.shapesArray.compositeResponder(triangle);
             window.setActiveShape(composite);
-            //composite->setColor(Color(1, 0, 0, 1));
-            //std::cout << "shapesArray -> " << composite << std::endl;
         } else {
             window.setActiveShape(nullptr);
         }
     }
-
-    //std::cout << shape << std::endl;
-    //std::cout << button << ":" << state << " " << x << ", " << y << std::endl;
 }
 
 void windowMouseDownMove(int x, int y)

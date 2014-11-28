@@ -53,6 +53,8 @@ public:
     void add(ShapesArray *shapesArray);
     void remove(Shape *shape);
     void remove(ShapesArray *shapesArray);
+    // Position adjustion
+    void translateBy(double x, double y);
 };
 
 #endif

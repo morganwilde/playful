@@ -304,3 +304,8 @@ void ShapesArray::remove(ShapesArray *shapesArray)
         free(shapesArray);
     }
 }
+// Position adjustion
+void ShapesArray::translateBy(double x, double y)
+{
+    
+}
