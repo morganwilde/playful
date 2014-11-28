@@ -369,7 +369,7 @@ void windowMouseButton(int button, int state, int x, int y)
     Window &window = Window::getSingleton();
     if (state == MOUSE_BUTTON_DOWN) {
         Point location = Point(x, window.shapesArray.getHeight() - y);
-        Shape *shape = window.shapesArray.shapeContaining(location);
+        ShapeTriangle *shape = window.shapesArray.shapeContaining(location);
         std::cout << location << "button -> " << shape << std::endl;
     }
 

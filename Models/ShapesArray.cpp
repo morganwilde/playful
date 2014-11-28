@@ -172,16 +172,19 @@ ShapeTriangle *ShapesArray::shapeContaining(Point point)
 {
     ShapeTriangle *triangle = nullptr;
 
-    for (int i = 0; i < this->shapeCount; i++) {
-        ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[0];
-        if (tester->pointContained(point)) {
+    for (int i = 0; i < this->getCompositeCount(); i++) {
+        ShapeTriangle *tester = this->getCompositeArray()[i]->shapeContaining(point);
+        if (tester != nullptr) {
             triangle = tester;
         }
     }
 
     if (triangle == nullptr) {
-        for (int i = 0; i < this->getCompositeCount(); i++) {
-            triangle = this->getCompositeArray()[i]->shapeContaining(point);
+        for (int i = 0; i < this->shapeCount; i++) {
+            ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[0];
+            if (tester->pointContained(point)) {
+                triangle = tester;
+            }
         }
     }
 
