@@ -13,7 +13,7 @@ class Window::Implementation {
     int height;
     std::string title;
     char *titleCString;
-    Shape *activeShape;
+    ShapesArray *activeShape;
 
     // Glut related properties
     bool glutInitialised;
@@ -159,6 +159,18 @@ void Window::setDisplayLoopActive(bool isActive)
     this->implementation->displayLoopActive = isActive;
 }
 
+void Window::setActiveShape(ShapesArray *shape)
+{
+    if (getActiveShape() != nullptr) {
+        getActiveShape()->deactivate();
+    }
+    
+    this->implementation->activeShape = shape;
+
+    if (getActiveShape() != nullptr) {
+        getActiveShape()->activate();
+    }
+}
 
 // Getters
 int Window::getWidth()
@@ -180,6 +192,10 @@ char *Window::getTitleCString()
 bool Window::isDisplayLoopActive()
 {
     return this->implementation->displayLoopActive;
+}
+ShapesArray *Window::getActiveShape()
+{
+    return this->implementation->activeShape;
 }
 // Getters glut related
 GLuint Window::getGlutProgram()
@@ -373,9 +389,12 @@ void windowMouseButton(int button, int state, int x, int y)
         //std::cout << location << "button -> " << triangle << std::endl;
         if (triangle != nullptr) {
             ShapesArray *composite = window.shapesArray.compositeResponder(triangle);
+            window.setActiveShape(composite);
+            //composite->setColor(Color(1, 0, 0, 1));
             //std::cout << "shapesArray -> " << composite << std::endl;
+        } else {
+            window.setActiveShape(nullptr);
         }
-        
     }
 
     //std::cout << shape << std::endl;

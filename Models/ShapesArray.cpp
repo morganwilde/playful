@@ -3,6 +3,7 @@
 ShapesArray::ShapesArray()
 {
     setSespondsToMouseButtonDown(false);
+    deactivate();
     this->shapeCount = 0;
     this->array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
     this->compositeCount = 0;
@@ -136,11 +137,19 @@ GLfloat *ShapesArray::getColorArray()
         for (int j = 0; j < shape->getPointCount(); j++) {
             count += 4;
             //std::cout << shape->color << std::endl;
+
+            Color chosenColor;
+            if (isActive()) {
+                chosenColor = Color(1, 0, 1, 1);
+            } else {
+                chosenColor = shape->color;
+            }
+
             colorArray = (GLfloat *)realloc(colorArray, count * sizeof(GLfloat));
-            colorArray[count - 4] = (GLfloat)shape->color.getRed();
-            colorArray[count - 3] = (GLfloat)shape->color.getGreen();
-            colorArray[count - 2] = (GLfloat)shape->color.getBlue();
-            colorArray[count - 1] = (GLfloat)shape->color.getAlpha();
+            colorArray[count - 4] = (GLfloat)chosenColor.getRed();
+            colorArray[count - 3] = (GLfloat)chosenColor.getGreen();
+            colorArray[count - 2] = (GLfloat)chosenColor.getBlue();
+            colorArray[count - 1] = (GLfloat)chosenColor.getAlpha();
         }
     }
 
@@ -216,6 +225,19 @@ ShapesArray *ShapesArray::compositeResponder(ShapeTriangle *triangle)
     }
 
     return composite;
+}
+
+void ShapesArray::activate()
+{
+    this->active = true;
+}
+void ShapesArray::deactivate()
+{
+    this->active = false;
+}
+bool ShapesArray::isActive()
+{
+    return this->active;
 }
 
 // Array managers

@@ -33,14 +33,14 @@ public:
     void setHeight(int height);
     void setTitle(std::string title);
     void setDisplayLoopActive(bool isActive);
-    void setActiveShape(Shape *shape);
+    void setActiveShape(ShapesArray *shape);
     // Getters
     int getWidth();
     int getHeight();
     std::string getTitle();
     char *getTitleCString();
     bool isDisplayLoopActive();
-    Shape *getActiveShape();
+    ShapesArray *getActiveShape();
     // Getters glut related
     GLuint getGlutProgram();
     GLint getGlutCoordinateAttribute();

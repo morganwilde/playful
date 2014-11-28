@@ -20,6 +20,7 @@ private:
     int width;
     int height;
     Color color;
+    bool active;
     // First responder to mouse button down events
     bool respondsToMouseButtonDown;
 public:
@@ -44,6 +45,9 @@ public:
     // Convenience methods
     ShapeTriangle *shapeContaining(Point point);
     ShapesArray *compositeResponder(ShapeTriangle *triangle);
+    void activate();
+    void deactivate();
+    bool isActive();
     // Array managers
     void add(Shape *shape);
     void add(ShapesArray *shapesArray);
