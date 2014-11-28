@@ -181,7 +181,7 @@ ShapeTriangle *ShapesArray::shapeContaining(Point point)
 
     if (triangle == nullptr) {
         for (int i = 0; i < this->shapeCount; i++) {
-            ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[0];
+            ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[i];
             if (tester->pointContained(point)) {
                 triangle = tester;
             }
