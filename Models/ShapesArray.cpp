@@ -307,7 +307,6 @@ void ShapesArray::remove(ShapesArray *shapesArray)
 // Position adjustion
 void ShapesArray::translateBy(double x, double y)
 {
-    std::cout << "(" << x << ", " << y << ")" << std::endl;
     for (int i = 0; i < getShapeCount(); i++) {
         ShapeTriangle *triangle = (ShapeTriangle *)getShapeArray()[i];
         triangle->translateBy(x, y);
