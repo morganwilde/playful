@@ -2,6 +2,7 @@
 
 ShapesArray::ShapesArray()
 {
+    setSespondsToMouseButtonDown(false);
     this->shapeCount = 0;
     this->array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
     this->compositeCount = 0;
@@ -33,6 +34,10 @@ void ShapesArray::setColor(Color color)
         getShapeArray()[i]->color = getColor();
     }
     
+}
+void ShapesArray::setSespondsToMouseButtonDown(bool responds)
+{
+    this->respondsToMouseButtonDown = responds;
 }
 
 // Getters
@@ -168,6 +173,11 @@ Color ShapesArray::getColor()
     return this->color;
 }
 
+bool ShapesArray::getRespondsToMouseButtonDown()
+{
+    return this->respondsToMouseButtonDown;
+}
+
 ShapeTriangle *ShapesArray::shapeContaining(Point point)
 {
     ShapeTriangle *triangle = nullptr;
@@ -189,6 +199,23 @@ ShapeTriangle *ShapesArray::shapeContaining(Point point)
     }
 
     return triangle;
+}
+
+ShapesArray *ShapesArray::compositeResponder(ShapeTriangle *triangle)
+{
+    ShapesArray *composite = nullptr;
+    for (int i = 0; i < this->getCompositeCount(); i++) {
+        ShapesArray *tester = this->getCompositeArray()[i];
+        for (int s = 0; s < tester->getShapeCount(); s++) {
+            if (tester->getShapeArray()[s] == triangle) {
+                if (tester->getRespondsToMouseButtonDown()) {
+                    composite = tester;
+                }
+            }
+        }
+    }
+
+    return composite;
 }
 
 // Array managers

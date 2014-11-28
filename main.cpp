@@ -14,9 +14,13 @@ int main(int argc, char *argv[])
     // Add shapes
     ShapeTriangle *triangle1 = new ShapeTriangle(Point(0, 400, 0), 800, 100);
     ShapeTriangle *triangle2 = new ShapeTriangle(Point(0, 0), Point(400, 200), Point(200, 500));
-    Rectangle *rect1 = new Rectangle(Point(0, 0, 0), 200, 200);
+    Rectangle *rect1 = new Rectangle(Point(220, 0, 0), 200, 200);
     Rectangle *line = new Rectangle(Point(400, 0, 0), 20, 600);
     Circle *circle = new Circle(Point(400, 300), 200);
+
+    // Event responders
+    circle->setSespondsToMouseButtonDown(true);
+    rect1->setSespondsToMouseButtonDown(true);
 
     // Add color
     triangle1->color = Color(1, 0, 0, 1);
