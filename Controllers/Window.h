@@ -34,6 +34,8 @@ public:
     void setTitle(std::string title);
     void setDisplayLoopActive(bool isActive);
     void setActiveShape(ShapesArray *shape);
+    void setMouseButtonState(int state);
+    void setMousePosition(Point position);
     // Getters
     int getWidth();
     int getHeight();
@@ -41,6 +43,8 @@ public:
     char *getTitleCString();
     bool isDisplayLoopActive();
     ShapesArray *getActiveShape();
+    int getMouseButtonState();
+    Point getMousePosition();
     // Getters glut related
     GLuint getGlutProgram();
     GLint getGlutCoordinateAttribute();

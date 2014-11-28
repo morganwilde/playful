@@ -2,6 +2,9 @@
 #include "Logger.h"
 #include <unistd.h>
 
+#define MOUSE_BUTTON_DOWN 0
+#define MOUSE_BUTTON_UP 1
+
 /*
  * Hidden implementation [start]
  */
@@ -14,6 +17,8 @@ class Window::Implementation {
     std::string title;
     char *titleCString;
     ShapesArray *activeShape;
+    int mouseButtonState;
+    Point mousePosition;
 
     // Glut related properties
     bool glutInitialised;
@@ -172,6 +177,16 @@ void Window::setActiveShape(ShapesArray *shape)
     }
 }
 
+void Window::setMouseButtonState(int state)
+{
+    this->implementation->mouseButtonState = state;
+}
+
+void Window::setMousePosition(Point position)
+{
+    this->implementation->mousePosition = position;
+}
+
 // Getters
 int Window::getWidth()
 {
@@ -197,6 +212,15 @@ ShapesArray *Window::getActiveShape()
 {
     return this->implementation->activeShape;
 }
+int Window::getMouseButtonState()
+{
+    return this->implementation->mouseButtonState;
+}
+Point Window::getMousePosition()
+{
+    return this->implementation->mousePosition;
+}
+
 // Getters glut related
 GLuint Window::getGlutProgram()
 {
@@ -378,22 +402,26 @@ void windowKeyboardSpecial(int key, int x, int y)
     }
 
     if (window.getActiveShape() != nullptr && (moveX != 0 || moveY != 0)) {
-        std::cout << "move" << std::endl;
+        //std::cout << "move" << std::endl;
+        window.getActiveShape()->translateBy(moveX, moveY);
     }
 }
 
 void windowMouseMove(int x, int y)
 {
-    //std::cout << x << ", " << y << std::endl;
+    Window &window = Window::getSingleton();
+    if (window.getActiveShape() != nullptr && window.getMouseButtonState() == MOUSE_BUTTON_DOWN) {
+        //std::cout << x << ", " << y << std::endl;
+    }
 }
-
-#define MOUSE_BUTTON_DOWN 0
-#define MOUSE_BUTTON_UP 1
 
 void windowMouseButton(int button, int state, int x, int y)
 {
     Window &window = Window::getSingleton();
+    window.setMouseButtonState(state);
     if (state == MOUSE_BUTTON_DOWN) {
+        std::cout << "dooo" << std::endl;
+
         Point location = Point(x, window.shapesArray.getHeight() - y);
         ShapeTriangle *triangle = window.shapesArray.shapeContaining(location);
         if (triangle != nullptr) {
@@ -402,10 +430,24 @@ void windowMouseButton(int button, int state, int x, int y)
         } else {
             window.setActiveShape(nullptr);
         }
+    } else {
+        window.setActiveShape(nullptr);
+        window.setMousePosition(Point(0, 0));
     }
 }
 
 void windowMouseDownMove(int x, int y)
 {
-    //std::cout << x << ", " << y << std::endl;
+    Window &window = Window::getSingleton();
+    if (window.getActiveShape() != nullptr && window.getMouseButtonState() == MOUSE_BUTTON_DOWN) {
+        // Determine mouse movement delta
+        double deltaX = 0;
+        double deltaY = 0;
+        if (window.getMousePosition() != Point(0, 0, 0)) {
+            deltaX = x - window.getMousePosition().getX();
+            deltaY = window.getMousePosition().getY() - y;
+        }
+        window.setMousePosition(Point((double)x, (double)y));
+        window.getActiveShape()->translateBy(deltaX, deltaY);
+    }
 }

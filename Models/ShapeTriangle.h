@@ -35,6 +35,7 @@ public:
     double getDeterminant3D();
     // Methods
     bool pointContained(Point point);
+    void translateBy(double x, double y);
 };
 
 #endif

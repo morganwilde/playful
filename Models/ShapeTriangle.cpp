@@ -128,3 +128,19 @@ bool ShapeTriangle::pointContained(Point point)
     // For a point to be inside a triangle, all lambdas must be >= 0
     return (lambda1 >= 0) && (lambda2 >= 0) && (lambda3 >= 0);
 }
+void ShapeTriangle::translateBy(double x, double y)
+{
+    popFromPointArray();
+    popFromPointArray();
+    popFromPointArray();
+
+    //std::cout << getPointA1() << std::endl;
+    setPointA1(Point(getPointA1().getX() + x, getPointA1().getY() + y, getPointA1().getZ()));
+    setPointA2(Point(getPointA2().getX() + x, getPointA2().getY() + y, getPointA2().getZ()));
+    setPointA3(Point(getPointA3().getX() + x, getPointA3().getY() + y, getPointA3().getZ()));
+    //std::cout << getPointA1() << std::endl;
+
+    pushToPointArray(getPointA1());
+    pushToPointArray(getPointA2());
+    pushToPointArray(getPointA3());
+}
