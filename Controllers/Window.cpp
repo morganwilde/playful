@@ -361,10 +361,18 @@ void windowMouseMove(int x, int y)
     //std::cout << x << ", " << y << std::endl;
 }
 
+#define MOUSE_BUTTON_DOWN 0
+#define MOUSE_BUTTON_UP 1
+
 void windowMouseButton(int button, int state, int x, int y)
 {
     Window &window = Window::getSingleton();
-    Shape *shape = window.shapesArray.shapeContaining(Point(x, y, 0));
+    if (state == MOUSE_BUTTON_DOWN) {
+        Point location = Point(x, window.shapesArray.getHeight() - y);
+        Shape *shape = window.shapesArray.shapeContaining(location);
+        std::cout << location << "button -> " << shape << std::endl;
+    }
+
     //std::cout << shape << std::endl;
     //std::cout << button << ":" << state << " " << x << ", " << y << std::endl;
 }

@@ -2,6 +2,7 @@
 #define SHAPESARRAY_H
 
 #include "Shape.h"
+#include "ShapeTriangle.h"
 #include <OpenGL/gl.h>
 
 class ShapesArray
@@ -26,6 +27,8 @@ public:
     void setSize(int width, int height);
     void setColor(Color color);
     // Getters
+    int getWidth();
+    int getHeight();
     int getShapeCount();
     Shape **getShapeArray();
     int getCompositeCount();
@@ -34,7 +37,7 @@ public:
     GLfloat *getColorArray();
     int getVertexCount();
     Color getColor();
-    Shape *shapeContaining(Point point);
+    ShapeTriangle *shapeContaining(Point point);
     // Array managers
     void add(Shape *shape);
     void add(ShapesArray *shapesArray);

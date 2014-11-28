@@ -35,6 +35,16 @@ void ShapesArray::setColor(Color color)
     
 }
 
+// Getters
+int ShapesArray::getWidth()
+{
+    return this->width;
+}
+int ShapesArray::getHeight()
+{
+    return this->height;
+}
+
 int ShapesArray::getShapeCount()
 {
     return this->shapeCount;
@@ -158,18 +168,24 @@ Color ShapesArray::getColor()
     return this->color;
 }
 
-Shape *ShapesArray::shapeContaining(Point point)
+ShapeTriangle *ShapesArray::shapeContaining(Point point)
 {
-    Shape *shape = nullptr;
+    ShapeTriangle *triangle = nullptr;
 
     for (int i = 0; i < this->shapeCount; i++) {
-        Shape *tester = this->getShapeArray()[0];
-        if (tester->contains(point)) {
-            shape = tester;
+        ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[0];
+        if (tester->pointContained(point)) {
+            triangle = tester;
         }
     }
 
-    return shape;
+    if (triangle == nullptr) {
+        for (int i = 0; i < this->getCompositeCount(); i++) {
+            triangle = this->getCompositeArray()[i]->shapeContaining(point);
+        }
+    }
+
+    return triangle;
 }
 
 // Array managers
