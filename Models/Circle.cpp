@@ -34,7 +34,7 @@ Circle::Circle(Point center, double radius)
 {
     // Convenience constructor
     ShapesArray::ShapesArray();
-    init(center, radius, 20);
+    init(center, radius, 100);
 }
 
 Circle::~Circle()

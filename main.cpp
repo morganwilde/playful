@@ -12,31 +12,46 @@ int main(int argc, char *argv[])
     window.glutInitWrapper(&argc, argv);
 
     // Add shapes
-    ShapeTriangle *triangle1 = new ShapeTriangle(Point(0, 400, 0), 800, 100);
-    ShapeTriangle *triangle2 = new ShapeTriangle(Point(0, 0), Point(400, 200), Point(200, 500));
     Rectangle *rect1 = new Rectangle(Point(220, 0, 0), 200, 200);
-    Rectangle *line = new Rectangle(Point(400, 0, 0), 20, 600);
-    Circle *circle = new Circle(Point(400, 300), 200);
+    Rectangle *rect2 = new Rectangle(Point(220, 0, 0), 200, 200);
+    Rectangle *rect3 = new Rectangle(Point(220, 0, 0), 200, 200);
+    Rectangle *rect4 = new Rectangle(Point(10, 10, 0), 200, 200);
+    Circle *circle = new Circle(Point(400, 300), 200, 20);
+    Circle *control1 = new Circle(Point(10, 10), 10);
+    Circle *control2 = new Circle(Point(210, 10), 10);
+    Circle *control3 = new Circle(Point(10, 210), 10);
+    Circle *control4 = new Circle(Point(210, 210), 10);
 
     // Event responders
     circle->setSespondsToMouseButtonDown(true);
     rect1->setSespondsToMouseButtonDown(true);
+    rect2->setSespondsToMouseButtonDown(true);
+    rect3->setSespondsToMouseButtonDown(true);
+    rect4->setSespondsToMouseButtonDown(true);
 
     // Add color
-    triangle1->color = Color(1, 0, 0, 1);
-    triangle2->color = Color(0.5, 0, 0, 1);
     rect1->setColor(Color(0, 1, 0, 1));
-    line->setColor(Color(0, 0, 1, 1));
+    Color blue = Color(0, 174/255.0, 239/255.0, 0.15);
+    control1->setColor(blue);
+    control2->setColor(blue);
+    control3->setColor(blue);
+    control4->setColor(blue);
+    // Control points
+    rect2->setColor(Color(0, 0.8, 0, 1));
+    rect3->setColor(Color(0, 0.6, 0, 1));
+    rect4->setColor(Color(137/255.0, 137/255.0, 137/255.0, 1));
     circle->setColor(Color(0.5, 0.5, 0.5, 1));
     
-    /*
-    window.shapesArray.add(triangle2);
+    // Add to hierarchy
     window.shapesArray.add(rect1);
-    window.shapesArray.add(line);
-    */
-    window.shapesArray.add(rect1);
-    
-    //window.shapesArray.add(triangle2);
+    window.shapesArray.add(rect4);
+    window.shapesArray.add(control1);
+    window.shapesArray.add(control2);
+    window.shapesArray.add(control3);
+    window.shapesArray.add(control4);
+    // Control points
+    window.shapesArray.add(rect2);
+    window.shapesArray.add(rect3);
     window.shapesArray.add(circle);
 
     window.glutDisplayLoop();
