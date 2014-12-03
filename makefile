@@ -12,6 +12,7 @@ Models/ShapesArray.cpp \
 Models/Color.cpp \
 Models/Rectangle.cpp \
 Models/Circle.cpp \
+Views/View.cpp \
 Controllers/Logger.cpp
 
 TESTS = Tests/Test.cpp \
