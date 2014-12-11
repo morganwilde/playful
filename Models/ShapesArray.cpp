@@ -2,7 +2,7 @@
 
 ShapesArray::ShapesArray()
 {
-    setSespondsToMouseButtonDown(false);
+    setRespondsToMouseButtonDown(false);
     deactivate();
     this->shapeCount = 0;
     this->array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
@@ -36,7 +36,7 @@ void ShapesArray::setColor(Color color)
     }
     
 }
-void ShapesArray::setSespondsToMouseButtonDown(bool responds)
+void ShapesArray::setRespondsToMouseButtonDown(bool responds)
 {
     this->respondsToMouseButtonDown = responds;
 }

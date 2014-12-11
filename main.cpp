@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
     Circle *control4 = new Circle(Point(210, 210), 10);
 
     // Event responders
-    circle->setSespondsToMouseButtonDown(true);
-    rect1->setSespondsToMouseButtonDown(true);
-    rect2->setSespondsToMouseButtonDown(true);
-    rect3->setSespondsToMouseButtonDown(true);
-    rect4->setSespondsToMouseButtonDown(true);
+    circle->setRespondsToMouseButtonDown(true);
+    rect1->setRespondsToMouseButtonDown(true);
+    rect2->setRespondsToMouseButtonDown(true);
+    rect3->setRespondsToMouseButtonDown(true);
+    rect4->setRespondsToMouseButtonDown(true);
 
     // Add color
     rect1->setColor(Color(0, 1, 0, 1));

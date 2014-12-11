@@ -394,10 +394,10 @@ void windowKeyboardSpecial(int key, int x, int y)
     double moveX = 0;
     double moveY = 0;
     switch (key) {
-        case 100: moveX -= 1; break;
-        case 101: moveY += 1; break;
-        case 102: moveX += 1; break;
-        case 103: moveY -= 1; break;
+        case 100: moveX -= 1; break; // Left arrow
+        case 101: moveY += 1; break; // Up arrow
+        case 102: moveX += 1; break; // Right arrow
+        case 103: moveY -= 1; break; // Down arrow
         default: std::cout << key << std::endl;
     }
 

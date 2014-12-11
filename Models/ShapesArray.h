@@ -29,7 +29,7 @@ public:
     // Setters
     void setSize(int width, int height);
     void setColor(Color color);
-    void setSespondsToMouseButtonDown(bool responds);
+    void setRespondsToMouseButtonDown(bool responds);
     // Getters
     int getWidth();
     int getHeight();
