@@ -22,9 +22,19 @@ int Shape::getPointCount() const
     return this->pointCount;
 }
 
+size_t Shape::getVectorSize() const
+{
+    return getPointVector().size();
+}
+
 Point *Shape::getPointArray() const
 {
     return this->pointArray;
+}
+
+std::vector<Point> Shape::getPointVector() const
+{
+    return this->pointVector;
 }
 
 void Shape::pushToPointArray(Point point)
@@ -32,6 +42,13 @@ void Shape::pushToPointArray(Point point)
     this->pointCount++;
     this->pointArray = (Point *)realloc(this->pointArray, sizeof(Point) * this->pointCount);
     this->pointArray[this->pointCount - 1] = point;
+
+    pushToPointVector(point);
+}
+
+void Shape::pushToPointVector(Point point)
+{
+    pointVector.push_back(point);
 }
 
 Point Shape::popFromPointArray()

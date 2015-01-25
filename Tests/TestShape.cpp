@@ -55,6 +55,36 @@ void TestShape::testPushToPointArray()
     this->testInterpret();
 }
 
+void TestShape::testPushToPointVector()
+{
+    this->testInit(__func__);
+    Shape shape = Shape();
+    Point *points = new Point[3];
+    points[0] = Point(1,2,3);
+    points[1] = Point(-1.2,-3.4,-5.6);
+    points[1] = Point(-1.2,-3.4);
+
+    shape.pushToPointVector(points[0]);
+    shape.pushToPointVector(points[1]);
+    shape.pushToPointVector(points[2]);
+    if (shape.getVectorSize() != 2) {
+        this->testFailed();
+    }
+
+    //std::cout << *shape.getPointVector().begin() << std::endl;
+
+    for (std::vector<Point>::iterator i = shape.getPointVector().begin(); i != shape.getPointVector().end(); ++i) {
+        std::cout << *i << std::endl;
+        break;
+    }
+    for (size_t i = 0; i < shape.getPointVector().size(); i++) {
+        std::cout << shape.getPointVector()[i] << std::endl;
+        break;
+    }
+    
+    this->testInterpret();
+}
+
 void TestShape::testPopFromPointArray()
 {
     this->testInit(__func__);
@@ -78,5 +108,17 @@ void TestShape::testPopFromPointArray()
     if (point.getZ() != points[1].getZ()) {
         this->testFailed();
     }
+    this->testInterpret();
+}
+
+void TestShape::testPointVectorAfterConstructor()
+{
+    this->testInit(__func__);
+    Shape shape = Shape();
+
+    if (shape.getPointVector().empty() == false) {
+        this->testFailed();
+    }
+
     this->testInterpret();
 }

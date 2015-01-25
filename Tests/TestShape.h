@@ -11,6 +11,9 @@ public:
     void testPointCount();
     void testPushToPointArray();
     void testPopFromPointArray();
+    // New tests
+    void testPointVectorAfterConstructor();
+    void testPushToPointVector();
 };
 
 #endif

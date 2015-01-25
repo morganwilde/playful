@@ -250,6 +250,11 @@ void Window::glutInitWrapper(int *glutArgcp, char *glutArgv[])
         glutInitWindowSize(this->getWidth(), this->getHeight());
         glutCreateWindow(this->getTitleCString());
 
+        // OpenGL settings
+        // GL_BLEND enables alpha blending with rgba colors
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
         // Assign callback functions
         glutDisplayFunc(windowDisplay);
         glutKeyboardFunc(windowKeyboard);

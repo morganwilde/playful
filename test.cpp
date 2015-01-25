@@ -36,6 +36,9 @@ int main(int argc, char *argv[])
         testShape.testPointCount();
         testShape.testPushToPointArray();
         testShape.testPopFromPointArray();
+        // New tests
+        testShape.testPointVectorAfterConstructor();
+        testShape.testPushToPointVector();
     }
     {
         TestShapeTriangle testShapeTriangle;
