@@ -32,8 +32,8 @@ void CanvasController::setup()
     double toolsHeight = window.getHeight() - 2*padding;
 
     // Create area objects
-    Rectangle *canvasArea = new Rectangle(Point(padding, padding, 0), canvasWidth, canvasHeight);
-    Rectangle *toolsArea = new Rectangle(Point(canvasWidth + 2*padding, padding, 0), toolsWidth, toolsHeight);
+    canvasArea = new Rectangle(Point(padding, padding, 0), canvasWidth, canvasHeight);
+    toolsArea = new Rectangle(Point(canvasWidth + 2*padding, padding, 0), toolsWidth, toolsHeight);
 
     // Color them
     canvasArea->setColor(Color(1, 0, 0, 1));

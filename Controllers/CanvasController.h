@@ -9,6 +9,8 @@ class CanvasController
 {
 private:
     Window &window;
+    Rectangle *canvasArea;
+    Rectangle *toolsArea;
 public:
     CanvasController(int width, int height, std::string title);
     ~CanvasController();
