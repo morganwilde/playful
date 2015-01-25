@@ -9,6 +9,7 @@ class CanvasController
 {
 private:
     Window &window;
+    Rectangle *backgroundArea;
     Rectangle *canvasArea;
     Rectangle *toolsArea;
 public:

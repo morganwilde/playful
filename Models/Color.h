@@ -20,6 +20,9 @@ public:
     void setGreen(double green);
     void setBlue(double blue);
     void setAlpha(double alpha);
+    // Functional setters
+    Color withAlpha(double alpha);
+    Color withHue(double hue);
     // Getters
     double getRed() const;
     double getGreen() const;
@@ -28,6 +31,13 @@ public:
     double *getColorArray();
     // Operators
     friend std::ostream& operator<<(std::ostream &stream, const Color &color);
+    // Class methods
+    static Color redColor();
+    static Color greenColor();
+    static Color blueColor();
+    static Color whiteColor();
+    static Color grayColor();
+    static Color blackColor();
 };
 
 #endif

@@ -32,14 +32,17 @@ void CanvasController::setup()
     double toolsHeight = window.getHeight() - 2*padding;
 
     // Create area objects
+    backgroundArea = new Rectangle(Point(0, 0, 0), window.getWidth(), window.getHeight());
     canvasArea = new Rectangle(Point(padding, padding, 0), canvasWidth, canvasHeight);
     toolsArea = new Rectangle(Point(canvasWidth + 2*padding, padding, 0), toolsWidth, toolsHeight);
 
     // Color them
-    canvasArea->setColor(Color(1, 0, 0, 1));
-    toolsArea->setColor(Color(0, 1, 0, 1));
+    backgroundArea->setColor(Color::grayColor().withHue(0.75));
+    canvasArea->setColor(Color::whiteColor());
+    toolsArea->setColor(Color::whiteColor().withAlpha(0.5));
 
     // Add to hierarchy
+    appendShape(backgroundArea);
     appendShape(canvasArea);
     appendShape(toolsArea);
 }

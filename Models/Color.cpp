@@ -41,6 +41,20 @@ void Color::setAlpha(double alpha)
     this->colorArray[3] = this->getAlpha();
 }
 
+// Functional setters
+Color Color::withAlpha(double alpha)
+{
+    setAlpha(alpha);
+    return *this;
+}
+Color Color::withHue(double hue)
+{
+    setRed(hue);
+    setGreen(hue);
+    setBlue(hue);
+    return *this;
+}
+
 // Getters
 double Color::getRed() const
 {
@@ -64,4 +78,30 @@ std::ostream& operator<<(std::ostream &stream, const Color &color)
 {
     stream << "Color( " << color.getRed() << " , " << color.getGreen() << " , " << color.getBlue() << " , " << color.getAlpha() << " )";
     return stream;
+}
+
+// Class methods
+Color Color::redColor()
+{
+    return Color(1, 0, 0, 1);
+}
+Color Color::greenColor()
+{
+    return Color(0, 1, 0, 1);
+}
+Color Color::blueColor()
+{
+    return Color(0, 0, 1, 1);
+}
+Color Color::whiteColor()
+{
+    return Color(1, 1, 1, 1);
+}
+Color Color::grayColor()
+{
+    return Color(0.5, 0.5, 0.5, 1);
+}
+Color Color::blackColor()
+{
+    return Color(0, 0, 0, 1);
 }
