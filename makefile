@@ -13,7 +13,8 @@ Models/Color.cpp \
 Models/Rectangle.cpp \
 Models/Circle.cpp \
 Views/View.cpp \
-Controllers/Logger.cpp
+Controllers/Logger.cpp \
+Controllers/CanvasController.cpp
 
 TESTS = Tests/Test.cpp \
 Tests/TestWindow.cpp \
