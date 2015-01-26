@@ -14,6 +14,7 @@ private:
     // Shapes made out of other Shapes
     int compositeCount;
     ShapesArray **compositeArray;
+    ShapesArray *parentArray;
     // Vertices derived from shapes and composites arrays
     int vertexCount;
     // Window size
@@ -43,8 +44,8 @@ public:
     Color getColor();
     bool getRespondsToMouseButtonDown();
     // Convenience methods
-    ShapeTriangle *shapeContaining(Point point);
-    ShapesArray *compositeResponder(ShapeTriangle *triangle);
+    ShapesArray *shapeContaining(Point point);
+    ShapesArray *compositeResponder();
     void activate();
     void deactivate();
     bool isActive();

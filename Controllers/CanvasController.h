@@ -15,6 +15,9 @@ private:
 public:
     CanvasController(int width, int height, std::string title);
     ~CanvasController();
+    // Getters
+    Rectangle *getCanvasArea();
+    Rectangle *getToolsArea();
     // Glut wrapper methods
     void arguments(int *argumentCount, char *argumentValues[]);
     void show();

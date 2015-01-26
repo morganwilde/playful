@@ -425,12 +425,15 @@ void windowMouseButton(int button, int state, int x, int y)
     Window &window = Window::getSingleton();
     window.setMouseButtonState(state);
     if (state == MOUSE_BUTTON_DOWN) {
-
         Point location = Point(x, window.shapesArray.getHeight() - y);
-        ShapeTriangle *triangle = window.shapesArray.shapeContaining(location);
-        if (triangle != nullptr) {
-            ShapesArray *composite = window.shapesArray.compositeResponder(triangle);
-            window.setActiveShape(composite);
+        ShapesArray *shapesArrayTarget = window.shapesArray.shapeContaining(location);
+        if (shapesArrayTarget != nullptr) {
+            ShapesArray *shapesArrayResponder = shapesArrayTarget->compositeResponder();
+            if (shapesArrayResponder != nullptr) {
+                window.setActiveShape(shapesArrayResponder);
+            } else {
+                window.setActiveShape(nullptr);
+            }            
         } else {
             window.setActiveShape(nullptr);
         }

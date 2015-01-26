@@ -8,6 +8,16 @@ CanvasController::~CanvasController()
 {
 }
 
+// Getters
+Rectangle *CanvasController::getCanvasArea()
+{
+    return canvasArea;
+}
+Rectangle *CanvasController::getToolsArea()
+{
+    return toolsArea;
+}
+
 void CanvasController::arguments(int *argumentCount, char *argumentValues[])
 {
     window.glutInitWrapper(argumentCount, argumentValues);
@@ -35,6 +45,9 @@ void CanvasController::setup()
     backgroundArea = new Rectangle(Point(0, 0, 0), window.getWidth(), window.getHeight());
     canvasArea = new Rectangle(Point(padding, padding, 0), canvasWidth, canvasHeight);
     toolsArea = new Rectangle(Point(canvasWidth + 2*padding, padding, 0), toolsWidth, toolsHeight);
+
+    // Responders
+    canvasArea->setRespondsToMouseButtonDown(false);
 
     // Color them
     backgroundArea->setColor(Color::grayColor().withHue(0.75));

@@ -14,7 +14,8 @@ Models/Rectangle.cpp \
 Models/Circle.cpp \
 Views/View.cpp \
 Controllers/Logger.cpp \
-Controllers/CanvasController.cpp
+Controllers/CanvasController.cpp \
+Models/ShapesArrayStorage.cpp
 
 TESTS = Tests/Test.cpp \
 Tests/TestWindow.cpp \

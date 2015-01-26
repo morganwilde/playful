@@ -4,10 +4,11 @@ ShapesArray::ShapesArray()
 {
     setRespondsToMouseButtonDown(false);
     deactivate();
-    this->shapeCount = 0;
-    this->array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
-    this->compositeCount = 0;
-    this->compositeArray = (ShapesArray **)malloc(this->compositeCount * sizeof(ShapesArray *));
+    shapeCount = 0;
+    array = (Shape **)malloc(this->shapeCount * sizeof(Shape *));
+    compositeCount = 0;
+    compositeArray = (ShapesArray **)malloc(this->compositeCount * sizeof(ShapesArray *));
+    parentArray = nullptr;
 }
 
 ShapesArray::~ShapesArray()
@@ -187,12 +188,12 @@ bool ShapesArray::getRespondsToMouseButtonDown()
     return this->respondsToMouseButtonDown;
 }
 
-ShapeTriangle *ShapesArray::shapeContaining(Point point)
+ShapesArray *ShapesArray::shapeContaining(Point point)
 {
-    ShapeTriangle *triangle = nullptr;
+    ShapesArray *triangle = nullptr;
 
     for (int i = 0; i < this->getCompositeCount(); i++) {
-        ShapeTriangle *tester = this->getCompositeArray()[i]->shapeContaining(point);
+        ShapesArray *tester = this->getCompositeArray()[i]->shapeContaining(point);
         if (tester != nullptr) {
             triangle = tester;
         }
@@ -202,7 +203,7 @@ ShapeTriangle *ShapesArray::shapeContaining(Point point)
         for (int i = 0; i < this->shapeCount; i++) {
             ShapeTriangle *tester = (ShapeTriangle *)this->getShapeArray()[i];
             if (tester->pointContained(point)) {
-                triangle = tester;
+                triangle = this;
             }
         }
     }
@@ -210,21 +211,14 @@ ShapeTriangle *ShapesArray::shapeContaining(Point point)
     return triangle;
 }
 
-ShapesArray *ShapesArray::compositeResponder(ShapeTriangle *triangle)
+ShapesArray *ShapesArray::compositeResponder()
 {
-    ShapesArray *composite = nullptr;
-    for (int i = 0; i < this->getCompositeCount(); i++) {
-        ShapesArray *tester = this->getCompositeArray()[i];
-        for (int s = 0; s < tester->getShapeCount(); s++) {
-            if (tester->getShapeArray()[s] == triangle) {
-                if (tester->getRespondsToMouseButtonDown()) {
-                    composite = tester;
-                }
-            }
-        }
+    if (getRespondsToMouseButtonDown()) {
+        return this;
+    } else if (parentArray != nullptr) {
+        return parentArray->compositeResponder();
     }
-
-    return composite;
+    return nullptr;
 }
 
 void ShapesArray::activate()
@@ -254,6 +248,8 @@ void ShapesArray::add(ShapesArray *shapesArray)
     this->compositeCount++;
     this->compositeArray = (ShapesArray **)realloc(this->compositeArray, this->compositeCount * sizeof(ShapesArray *));
     this->compositeArray[this->compositeCount - 1] = shapesArray;
+    // Update the child
+    shapesArray->parentArray = this;
 }
 void ShapesArray::remove(Shape *shape)
 {
