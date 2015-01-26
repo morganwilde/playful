@@ -4,6 +4,8 @@
 #include "Shape.h"
 #include "ShapeTriangle.h"
 #include <OpenGL/gl.h>
+#include <string> 
+#include <sstream>
 
 class ShapesArray
 {
@@ -34,6 +36,7 @@ public:
     // Getters
     int getWidth();
     int getHeight();
+    virtual std::string getShapesArrayType() const;
     int getShapeCount();
     Shape **getShapeArray();
     int getCompositeCount();
@@ -56,6 +59,8 @@ public:
     void remove(ShapesArray *shapesArray);
     // Position adjustion
     void translateBy(double x, double y);
+    // Operators
+    friend std::ofstream& operator<<(std::ofstream &stream, const ShapesArray &shapesArray);
 };
 
 #endif

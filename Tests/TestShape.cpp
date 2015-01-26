@@ -74,11 +74,11 @@ void TestShape::testPushToPointVector()
     //std::cout << *shape.getPointVector().begin() << std::endl;
 
     for (std::vector<Point>::iterator i = shape.getPointVector().begin(); i != shape.getPointVector().end(); ++i) {
-        std::cout << *i << std::endl;
+        //std::cout << *i << std::endl;
         break;
     }
     for (size_t i = 0; i < shape.getPointVector().size(); i++) {
-        std::cout << shape.getPointVector()[i] << std::endl;
+        //std::cout << shape.getPointVector()[i] << std::endl;
         break;
     }
     

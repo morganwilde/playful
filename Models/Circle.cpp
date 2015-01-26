@@ -53,13 +53,17 @@ void Circle::setRadius(double radius)
 }
 
 // Getters
-Point Circle::getCenter()
+Point Circle::getCenter() const
 {
     return this->center;
 }
-double Circle::getRadius()
+double Circle::getRadius() const
 {
     return this->radius;
+}
+int Circle::getSegments() const
+{
+    return this->segments;
 }
 double Circle::getPerimeter()
 {
@@ -75,4 +79,14 @@ Point Circle::getPointFromPolarAngle(double angle)
 double Circle::getSegmentWidth()
 {
     return getPerimeter() / segments;
+}
+
+std::string Circle::getShapesArrayType() const
+{
+    std::stringstream ss;
+    ss << "Circle( ";
+    ss << getCenter() << ", ";
+    ss << getRadius() << ", ";
+    ss << getSegments() << " )";
+    return ss.str();
 }

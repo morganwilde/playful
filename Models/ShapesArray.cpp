@@ -1,4 +1,6 @@
 #include "ShapesArray.h"
+#include <iostream>
+#include <fstream>
 
 ShapesArray::ShapesArray()
 {
@@ -50,6 +52,11 @@ int ShapesArray::getWidth()
 int ShapesArray::getHeight()
 {
     return this->height;
+}
+
+std::string ShapesArray::getShapesArrayType() const
+{
+    return "ShapesArray()";
 }
 
 int ShapesArray::getShapeCount()
@@ -307,4 +314,11 @@ void ShapesArray::translateBy(double x, double y)
         ShapeTriangle *triangle = (ShapeTriangle *)getShapeArray()[i];
         triangle->translateBy(x, y);
     }
+}
+
+// Operators
+std::ofstream& operator<<(std::ofstream &stream, const ShapesArray &shapesArray)
+{
+    stream << shapesArray.getShapesArrayType();
+    return stream;
 }

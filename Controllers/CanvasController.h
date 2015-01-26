@@ -25,6 +25,8 @@ public:
     void setup();
     // Visual hierarchy
     void appendShape(ShapesArray *shape);
+    void saveToStorage(std::string storageName);
+    void loadFromStorage(std::string storageName);
 };
 
 #endif

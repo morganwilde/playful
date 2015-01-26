@@ -1,0 +1,5 @@
+- Rectangle( Point( 0 , 0 , 0 ), 1000, 600 )
+- Rectangle( Point( 10 , 10 , 0 ), 785, 580 )
+-- Circle( Point( 400 , 300 , 0 ), 200, 20 )
+--- Rectangle( Point( 300 , 200 , 0 ), 200, 200 )
+- Rectangle( Point( 805 , 10 , 0 ), 185, 580 )

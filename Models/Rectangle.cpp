@@ -4,6 +4,11 @@ Rectangle::Rectangle(Point origin, double width, double height)
 {
     ShapesArray::ShapesArray();
 
+    // Store attributes
+    this->origin = origin;
+    this->width = width;
+    this->height = height;
+
     // Create three more anchor points
     Point originW = Point(origin.getX() + width, origin.getY());
     Point originH = Point(origin.getX(), origin.getY() + height);
@@ -20,4 +25,14 @@ Rectangle::Rectangle(Point origin, double width, double height)
 Rectangle::~Rectangle()
 {
 
+}
+
+std::string Rectangle::getShapesArrayType() const
+{
+    std::stringstream ss;
+    ss << "Rectangle( ";
+    ss << origin << ", ";
+    ss << width << ", ";
+    ss << height << " )";
+    return ss.str();
 }

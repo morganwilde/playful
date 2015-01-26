@@ -20,12 +20,14 @@ public:
     void setCenter(Point center);
     void setRadius(double radius);
     // Getters
-    Point getCenter();
-    double getRadius();
+    Point getCenter() const;
+    double getRadius() const;
+    int getSegments() const;
     double getPerimeter();
     Point getPointFromPolarAngle(double angle);
     // Getters Private
     double getSegmentWidth();
+    std::string getShapesArrayType() const;
 };
 
 #endif

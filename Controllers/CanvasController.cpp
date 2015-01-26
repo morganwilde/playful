@@ -1,4 +1,5 @@
 #include "CanvasController.h"
+#include "ShapesArrayStorageController.h"
 
 CanvasController::CanvasController(int width, int height, std::string title)
     : window(Window::getSingleton(width, height, title))
@@ -63,4 +64,17 @@ void CanvasController::setup()
 void CanvasController::appendShape(ShapesArray *shape)
 {
     window.shapesArray.add(shape);
+}
+
+void CanvasController::saveToStorage(std::string storageName)
+{
+    ShapesArrayStorageController storage = ShapesArrayStorageController(storageName);
+    storage.clear();
+    storage.store(&window.shapesArray);
+}
+
+void CanvasController::loadFromStorage(std::string storageName)
+{
+    ShapesArrayStorageController storage = ShapesArrayStorageController(storageName);
+    storage.loadInto(&window.shapesArray);
 }

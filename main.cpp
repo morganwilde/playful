@@ -14,15 +14,19 @@ int main(int argc, char *argv[])
     canvasController.setup();
 
     // Add temporary visual objects
-    Circle *circle = new Circle(Point(400, 300), 200, 20);
+    Circle *circle = new Circle(Point(400, 300), 200);
     circle->setRespondsToMouseButtonDown(true);
     circle->setColor(Color::redColor());
     canvasController.getCanvasArea()->add(circle);
 
+    
     Rectangle *rect = new Rectangle(Point(300, 200), 200, 200);
-    rect->setColor(Color::whiteColor());
+    rect->setColor(Color::blackColor());
     rect->setRespondsToMouseButtonDown(true);
     circle->add(rect);
+
+    canvasController.saveToStorage("data");
+    canvasController.loadFromStorage("data");
 
     canvasController.show();
 
